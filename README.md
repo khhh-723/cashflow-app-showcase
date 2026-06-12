@@ -4,6 +4,19 @@ CashFlow is a local-first Android ledger app for personal spending records. It c
 
 This repository is a public showcase snapshot. Secrets, local database files, generated APKs, and private development history are intentionally excluded.
 
+## Download Demo APK
+
+You can try the Android demo build from GitHub Releases:
+
+[Download CashFlow-demo-v0.1.5.apk](https://github.com/khhh-723/cashflow-app-showcase/releases/download/demo-v0.1.5/CashFlow-demo-v0.1.5.apk)
+
+Notes:
+
+- This is a demo/debug APK for portfolio review, not a production app-store release.
+- Core local features work without a backend account.
+- Cloud sync and AI chat require a separately configured backend and API key.
+- Android may show an install warning for APKs downloaded outside an app store.
+
 ## Highlights
 
 - **Local-first data model**: Room stores ledger entries, accounts, categories, budgets, draft state, OCR state, and sync metadata.
