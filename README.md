@@ -32,9 +32,13 @@ Notes:
 | --- | --- | --- |
 | ![Home](design/screenshots/home.jpg) | ![Bills](design/screenshots/bills.jpg) | ![Charts](design/screenshots/charts.jpg) |
 
-| AI Chat | Quick Entry | Settings |
+| AI Chat | Search & Filter | Quick Entry |
 | --- | --- | --- |
-| ![AI chat](design/screenshots/ai-chat.jpg) | ![Quick entry](design/screenshots/quick-entry.jpg) | ![Settings](design/screenshots/settings.jpg) |
+| ![AI chat](design/screenshots/ai-chat.jpg) | ![Search and filter](design/screenshots/search-filter.jpg) | ![Quick entry](design/screenshots/quick-entry.jpg) |
+
+| Settings |
+| --- |
+| ![Settings](design/screenshots/settings.jpg) |
 
 ## Tech Stack
 
