@@ -30,11 +30,11 @@ Notes:
 
 | Home | Bills | Charts |
 | --- | --- | --- |
-| ![Home](design/reference/home-screen.png) | ![Bills](design/reference/bills-screen.png) | ![Charts](design/reference/charts-screen.png) |
+| ![Home](design/screenshots/home.jpg) | ![Bills](design/screenshots/bills.jpg) | ![Charts](design/screenshots/charts.jpg) |
 
-| Quick Entry | Settings | Login |
+| AI Chat | Quick Entry | Settings |
 | --- | --- | --- |
-| ![Quick entry](design/reference/quick-entry-sheet.png) | ![Settings](design/reference/settings-screen.png) | ![Login](design/reference/login-screen.png) |
+| ![AI chat](design/screenshots/ai-chat.jpg) | ![Quick entry](design/screenshots/quick-entry.jpg) | ![Settings](design/screenshots/settings.jpg) |
 
 ## Tech Stack
 

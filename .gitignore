@@ -8,6 +8,7 @@ gradle-cache/
 *.apk
 local.properties
 captures/
+screenshot/
 *.log
 .env
 .env.*
