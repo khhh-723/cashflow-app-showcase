@@ -235,7 +235,7 @@ private val CategoryIconOptions = listOf(
     GlyphOption("work", "\uD83D\uDCBC"),
     GlyphOption("undo", "\u21A9\uFE0F"),
     GlyphOption("savings", "\uD83D\uDCB0"),
-    GlyphOption("more_horiz", "\u2022\u2022\u2022")
+    GlyphOption("more_horiz", "\u22EF")
 )
 
 private val AccountIconOptions = listOf(
@@ -3790,7 +3790,7 @@ private fun CategoryManageRow(
             modifier = Modifier.size(28.dp).background(category.colorHex.toColor().copy(alpha = 0.16f), CircleShape),
             contentAlignment = Alignment.Center
         ) {
-            Text(categoryEmoji(category), style = MaterialTheme.typography.labelLarge)
+            CategoryIconContent(category)
         }
         Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(6.dp)) {
             if (editing) {
@@ -3870,7 +3870,7 @@ private fun CategorySortRow(
             modifier = Modifier.size(30.dp).background(category.colorHex.toColor().copy(alpha = 0.16f), CircleShape),
             contentAlignment = Alignment.Center
         ) {
-            Text(categoryEmoji(category), style = MaterialTheme.typography.labelLarge)
+            CategoryIconContent(category)
         }
         Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
             Text(category.name, fontWeight = FontWeight.SemiBold, style = MaterialTheme.typography.bodyMedium, maxLines = 1, overflow = TextOverflow.Ellipsis)
@@ -3955,10 +3955,19 @@ private fun GlyphPicker(
                     modifier = Modifier.size(32.dp),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text(option.glyph, style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.SemiBold)
+                    GlyphPreview(option = option)
                 }
             }
         }
+    }
+}
+
+@Composable
+private fun GlyphPreview(option: GlyphOption) {
+    if (option.key == "more_horiz") {
+        OtherDotsIcon(modifier = Modifier.size(14.dp))
+    } else {
+        Text(option.glyph, style = MaterialTheme.typography.labelLarge, fontWeight = FontWeight.SemiBold)
     }
 }
 
@@ -3971,6 +3980,47 @@ private fun SettingsGroupTitle(title: String) {
         fontWeight = FontWeight.SemiBold,
         color = MaterialTheme.colorScheme.onSurfaceVariant
     )
+}
+
+@Composable
+private fun CategoryIconContent(
+    category: CategoryEntity?,
+    modifier: Modifier = Modifier,
+    textStyle: TextStyle = MaterialTheme.typography.labelLarge,
+    fontWeight: FontWeight = FontWeight.SemiBold,
+    otherIconSize: Dp = 14.dp
+) {
+    if (category?.code == "other" || category?.iconKey == "more_horiz") {
+        OtherDotsIcon(modifier = modifier.size(otherIconSize))
+    } else {
+        Text(
+            text = categoryEmoji(category),
+            modifier = modifier,
+            style = textStyle,
+            fontWeight = fontWeight,
+            maxLines = 1,
+            softWrap = false
+        )
+    }
+}
+
+@Composable
+private fun OtherDotsIcon(modifier: Modifier = Modifier) {
+    val dotColor = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.9f)
+    Canvas(modifier = modifier) {
+        val diameter = size.minDimension
+        val radius = diameter * 0.085f
+        val centerY = size.height / 2f
+        val startX = size.width * 0.30f
+        val stepX = size.width * 0.20f
+        repeat(3) { index ->
+            drawCircle(
+                color = dotColor,
+                radius = radius,
+                center = Offset(startX + stepX * index, centerY)
+            )
+        }
+    }
 }
 
 @Composable
@@ -4219,7 +4269,7 @@ private fun CategoryBudgetRow(category: CategoryEntity, onSave: (Long?) -> Unit)
             modifier = Modifier.size(36.dp).background(category.colorHex.toColor().copy(alpha = 0.16f), CircleShape),
             contentAlignment = Alignment.Center
         ) {
-            Text(categoryEmoji(category))
+            CategoryIconContent(category)
         }
         Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
             Text(category.name, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis)
@@ -4836,7 +4886,11 @@ private fun CategoryGrid(
                                 horizontalAlignment = Alignment.CenterHorizontally,
                                 verticalArrangement = Arrangement.Center
                             ) {
-                                Text(if (isCustomEntry) "+" else categoryEmoji(category), style = MaterialTheme.typography.titleLarge)
+                                if (isCustomEntry) {
+                                    Text("+", style = MaterialTheme.typography.titleLarge, maxLines = 1, softWrap = false)
+                                } else {
+                                    CategoryIconContent(category, textStyle = MaterialTheme.typography.titleLarge)
+                                }
                                 Text(
                                     if (isCustomEntry) "自定义" else category.name,
                                     maxLines = 1,
@@ -5149,7 +5203,7 @@ private fun TransactionRow(
                     modifier = Modifier.size(42.dp).background(color.copy(alpha = 0.16f), CircleShape),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text(categoryEmoji(category))
+                    CategoryIconContent(category)
                 }
                 Column(modifier = Modifier.weight(1f)) {
                     Text(displayTitle, fontWeight = FontWeight.SemiBold)
@@ -5219,13 +5273,19 @@ private fun CategoryWeightRow(
     val color = categoryColor(total.categoryCode, categories)
     Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-            Text(
-                text = "${categoryEmoji(total.categoryCode)} ${total.categoryName}",
-                modifier = Modifier.weight(1f),
-                fontWeight = if (large) FontWeight.SemiBold else FontWeight.Normal,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
+            Row(modifier = Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(6.dp), verticalAlignment = Alignment.CenterVertically) {
+                CategoryIconContent(
+                    category = categories.firstOrNull { it.code == total.categoryCode } ?: CategoryEntity(total.categoryCode, total.categoryName, "", "#64748B"),
+                    textStyle = MaterialTheme.typography.labelMedium,
+                    otherIconSize = 12.dp
+                )
+                Text(
+                    text = total.categoryName,
+                    fontWeight = if (large) FontWeight.SemiBold else FontWeight.Normal,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
             Text(
                 text = "${(percent * 100).toInt()}%  ${formatMoney(total.amountCents)}",
                 color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -5272,7 +5332,10 @@ private fun TopCategoryCard(
                     modifier = Modifier.size(28.dp).background(color.copy(alpha = 0.13f), RoundedCornerShape(8.dp)),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text(categoryEmoji(total.categoryCode), style = MaterialTheme.typography.labelMedium)
+                    CategoryIconContent(
+                        category = categories.firstOrNull { it.code == total.categoryCode } ?: CategoryEntity(total.categoryCode, total.categoryName, "", "#64748B"),
+                        textStyle = MaterialTheme.typography.labelMedium
+                    )
                 }
                 Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(1.dp)) {
                     Text(

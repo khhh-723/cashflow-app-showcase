@@ -487,7 +487,7 @@ CashFlow（曾用名：随记账）是一款本地优先的 Android 智能记账
 - Release 构建启用 R8 混淆，并保守保留 Retrofit、Room、Gson、WorkManager Worker 与 Huawei ML Kit 反射所需类型，避免混淆破坏真机功能。
 - 本地体验 APK 分支启用 `BuildConfig.LOCAL_PREVIEW`：保留登录/注册、AI 对话、数据同步和个人信息入口，但点击后只展示“本地体验版暂不开放登录、AI 和云同步；当前可使用本地记账、账单、图表和识别草稿。”，不得发起真实网络请求。
 - 本地体验 APK 的数据仅保存在本机，适合通过私有 GitHub Release 附件供受邀协作者侧载体验，不作为正式生产发布包。
-- 分支分发时应固定生成两份稳定 APK 产物：`app-debug-main.apk` 与 `app-debug-local-preview.apk`，不要长期依赖会被覆盖的 `app-debug.apk` 作为交付文件。
+- 分支分发时应固定生成一份主分支稳定 APK 产物 `app-debug.apk`，并保留 `app-debug-local-preview.apk` 作为本地体验包，不要长期依赖会被覆盖的临时命名文件作为交付文件。
 
 后续可选：
 
