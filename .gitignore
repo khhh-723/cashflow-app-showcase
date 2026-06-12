@@ -1,0 +1,17 @@
+.gradle/
+.gradle-home/
+gradle-cache/
+.idea/
+**/build/
+.tmp_ocr_*/
+*.iml
+*.apk
+local.properties
+captures/
+*.log
+.env
+.env.*
+!.env.example
+.DS_Store
+
+.learnings/

@@ -1,0 +1,3 @@
+-- CashFlow Server 初始化数据库
+-- MySQL 官方镜像会根据 docker-compose.yml 中的 MYSQL_DATABASE、MYSQL_USER、MYSQL_PASSWORD
+-- 自动创建数据库和应用用户。此文件保留给后续初始化脚本使用，避免在仓库中写入固定密码。

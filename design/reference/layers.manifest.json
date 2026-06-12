@@ -1,0 +1,120 @@
+﻿{
+    "scale":  0.4826254826254826,
+    "assets":  [
+                   {
+                       "id":  "home-screen",
+                       "notes":  "Home screen cut from reference composite",
+                       "scaled_bbox":  {
+                                           "y":  6.3,
+                                           "width":  158.3,
+                                           "height":  366.8,
+                                           "x":  6.8
+                                       },
+                       "transparent_required":  true,
+                       "type":  "bitmap",
+                       "asset":  "design/reference/home-screen.png",
+                       "source_bbox":  {
+                                           "y":  13,
+                                           "width":  328,
+                                           "height":  760,
+                                           "x":  14
+                                       }
+                   },
+                   {
+                       "id":  "bills-screen",
+                       "notes":  "Bills screen cut from reference composite",
+                       "scaled_bbox":  {
+                                           "y":  6.3,
+                                           "width":  157.3,
+                                           "height":  366.8,
+                                           "x":  170.8
+                                       },
+                       "transparent_required":  true,
+                       "type":  "bitmap",
+                       "asset":  "design/reference/bills-screen.png",
+                       "source_bbox":  {
+                                           "y":  13,
+                                           "width":  326,
+                                           "height":  760,
+                                           "x":  354
+                                       }
+                   },
+                   {
+                       "id":  "charts-screen",
+                       "notes":  "Charts screen cut from reference composite",
+                       "scaled_bbox":  {
+                                           "y":  6.3,
+                                           "width":  157.3,
+                                           "height":  366.8,
+                                           "x":  334
+                                       },
+                       "transparent_required":  true,
+                       "type":  "bitmap",
+                       "asset":  "design/reference/charts-screen.png",
+                       "source_bbox":  {
+                                           "y":  13,
+                                           "width":  326,
+                                           "height":  760,
+                                           "x":  692
+                                       }
+                   },
+                   {
+                       "id":  "settings-screen",
+                       "notes":  "Settings screen cut from reference composite",
+                       "scaled_bbox":  {
+                                           "y":  6.3,
+                                           "width":  160.2,
+                                           "height":  366.8,
+                                           "x":  496.1
+                                       },
+                       "transparent_required":  true,
+                       "type":  "bitmap",
+                       "asset":  "design/reference/settings-screen.png",
+                       "source_bbox":  {
+                                           "y":  13,
+                                           "width":  332,
+                                           "height":  760,
+                                           "x":  1028
+                                       }
+                   },
+                   {
+                       "id":  "quick-entry-sheet",
+                       "notes":  "Quick entry sheet cut from reference composite",
+                       "scaled_bbox":  {
+                                           "y":  387.1,
+                                           "width":  485,
+                                           "height":  91.7,
+                                           "x":  83.5
+                                       },
+                       "transparent_required":  true,
+                       "type":  "bitmap",
+                       "asset":  "design/reference/quick-entry-sheet.png",
+                       "source_bbox":  {
+                                           "y":  802,
+                                           "width":  1005,
+                                           "height":  190,
+                                           "x":  173
+                                       }
+                   },
+                   {
+                       "id":  "login-screen",
+                       "notes":  "Login screen cut from reference composite",
+                       "scaled_bbox":  {
+                                           "y":  6.3,
+                                           "width":  101.8,
+                                           "height":  366.8,
+                                           "x":  642.4
+                                       },
+                       "transparent_required":  true,
+                       "type":  "bitmap",
+                       "asset":  "design/reference/login-screen.png",
+                       "source_bbox":  {
+                                           "y":  13,
+                                           "width":  211,
+                                           "height":  760,
+                                           "x":  1331
+                                       }
+                   }
+               ],
+    "source_width":  1554
+}

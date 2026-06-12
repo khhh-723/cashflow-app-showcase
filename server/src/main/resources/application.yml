@@ -1,0 +1,64 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: cashflow-server
+
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/cashflow?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true}
+    username: ${DB_USERNAME:cashflow}
+    password: ${DB_PASSWORD:change-me-local-db-password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 300000
+      connection-timeout: 20000
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      timeout: 3000ms
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 4
+          min-idle: 1
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+    serialization:
+      write-dates-as-timestamps: false
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: AUTO
+      update-strategy: NOT_NULL
+
+jwt:
+  secret: ${JWT_SECRET:change-me-dev-jwt-secret-at-least-32-chars}
+  expiration: ${JWT_EXPIRATION:864000000}
+
+logging:
+  level:
+    com.cashflow: DEBUG
+    org.springframework.security: INFO
+
+# DeepSeek AI config
+deepseek:
+  api-key: ${DEEPSEEK_API_KEY:}
+  api-url: https://api.deepseek.com/v1/chat/completions
+  model: deepseek-chat
+  max-tokens: 2048
